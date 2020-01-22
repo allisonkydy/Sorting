@@ -67,23 +67,18 @@ def merge_in_place(arr, start, mid, end):
             mid += 1
             start += 1
 
-    # return arr
+    return arr
 
 
 def merge_sort_in_place(arr, l, r):
-    # if array contains one element, it is sorted
-    # if l >= r:
-    #     return arr
-    # if array contains more than one element, sort each half in place
-    # and merge the result in place
     if l < r:
         mid = (l + r) // 2
-        merge_sort_in_place(arr, l, mid - 1)
-        merge_sort_in_place(arr, mid, r)
-        merge_in_place(arr, l, mid, r)
+        merge_sort_in_place(arr, l, mid)
+        merge_sort_in_place(arr, mid + 1, r)
+        return merge_in_place(arr, l, mid, r)
+    else:
+        return arr
 
-arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
-print(merge_sort_in_place(arr1, 0, len(arr1)-1))
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
